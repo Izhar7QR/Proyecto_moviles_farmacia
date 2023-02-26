@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">Proyecto_Farmacia</string>
+    <string name="HiWord">Hola mundo</string>
 </resources>
