@@ -54,7 +54,7 @@ public class Login extends AppCompatActivity {
                     // Enviar las credenciales al servidor (aquí se omite el envío para simplificar el ejemplo)
                     // Si el servidor devuelve un código de éxito, iniciar sesión
                     Toast.makeText(Login.this, "Bienvenido, " + email, Toast.LENGTH_SHORT).show();
-                    Intent intent = new Intent(Login.this, Login.class);
+                    Intent intent = new Intent(Login.this, MainActivity.class);
                     startActivity(intent);
                     finish();
                 }
