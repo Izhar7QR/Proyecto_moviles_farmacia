@@ -1,5 +1,6 @@
 package com.example.proyecto_farmacia;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -53,13 +54,55 @@ public class Home extends Fragment {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
+        public class MainActivity extends AppCompatActivity implements SearchView.OnQueryTextListener {
 
+            private SearchView searchView;
+            private ListView listView;
+            private ArrayAdapter<String> adapter;
+
+            private String[] items = {"Manzana", "Banana", "Cereza", "Durazno", "Fresa", "Grosella", "Higo", "Kiwi", "Limón", "Mango"};
+
+            @Override
+            protected void onCreate(Bundle savedInstanceState) {
+                super.onCreate(savedInstanceState);
+                setContentView(R.layout.activity_main);
+
+                searchView = findViewById(R.id.search_view);
+                listView = findViewById(R.id.list_view);
+
+                adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, items);
+                listView.setAdapter(adapter);
+
+                searchView.setOnQueryTextListener(this);
+            }
+
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                adapter.getFilter().filter(newText);
+                return false;
+            }
+        }
+
+
+    }
+
+    public void search(View view){
+        Intent catalog = new Intent(getContext(), Catalog.class);
+        startActivity(catalog);
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
+
+
+
         return inflater.inflate(R.layout.fragment_home, container, false);
     }
 }
