@@ -4,14 +4,19 @@ import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
+import android.widget.SearchView;
 
 /**
  * A simple {@link Fragment} subclass.
- * Use the {@link Home#newInstance} factory method to
+ * Use the {@link Home#
+ * newInstance} factory method to
  * create an instance of this fragment.
  */
 public class Home extends Fragment {
@@ -24,6 +29,12 @@ public class Home extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
+    private SearchView searchView;
+    private ListView listView;
+    private ArrayAdapter<String> adapter;
+
+    private String[] items = {"Manzana", "Banana", "Cereza", "Durazno", "Fresa", "Grosella", "Higo", "Kiwi", "Limón", "Mango"};
+
 
     public Home() {
         // Required empty public constructor
@@ -54,46 +65,19 @@ public class Home extends Fragment {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
-        public class MainActivity extends AppCompatActivity implements SearchView.OnQueryTextListener {
 
-            private SearchView searchView;
-            private ListView listView;
-            private ArrayAdapter<String> adapter;
-
-            private String[] items = {"Manzana", "Banana", "Cereza", "Durazno", "Fresa", "Grosella", "Higo", "Kiwi", "Limón", "Mango"};
-
-            @Override
-            protected void onCreate(Bundle savedInstanceState) {
-                super.onCreate(savedInstanceState);
-                setContentView(R.layout.activity_main);
-
-                searchView = findViewById(R.id.search_view);
-                listView = findViewById(R.id.list_view);
-
-                adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, items);
-                listView.setAdapter(adapter);
-
-                searchView.setOnQueryTextListener(this);
-            }
-
-            @Override
-            public boolean onQueryTextSubmit(String query) {
-                return false;
-            }
-
-            @Override
-            public boolean onQueryTextChange(String newText) {
-                adapter.getFilter().filter(newText);
-                return false;
-            }
         }
 
 
-    }
-
     public void search(View view){
-        Intent catalog = new Intent(getContext(), Catalog.class);
-        startActivity(catalog);
+        //Intent catalog = new Intent(getContext(), Catalog.class);
+        //startActivity(catalog);
+        Catalog catalog = new Catalog();
+        FragmentManager manager = getParentFragmentManager();
+
+        manager.beginTransaction()
+                .replace(R.id.frame_container, catalog)
+                .commit();
     }
 
     @Override
@@ -101,8 +85,17 @@ public class Home extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
 
+        View vist = inflater.inflate(R.layout.fragment_home, container, false);
+
+        //searchView = vist.findViewById(R.id.search_view);
+        //listView = vist.findViewById(R.id.list_view);
+
+        //adapter = new ArrayAdapter<>(getContext(), android.R.layout.simple_list_item_1, items);
+        //listView.setAdapter(adapter);
+
+        //searchView.setOnQueryTextListener(this);
 
 
-        return inflater.inflate(R.layout.fragment_home, container, false);
+        return vist;
     }
 }
