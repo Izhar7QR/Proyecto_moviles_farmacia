@@ -136,8 +136,6 @@ public class Login extends AppCompatActivity {
                                 intencion.putExtra(MainActivity.stringUser, email);
                                 startActivity(intencion);
                                 // FIN para pasar de una actividad a otra
-
-
                             }else{
 
                                 Toast.makeText(Login.this,"No se pudo iniciar sesión con las credenciales aportadas",Toast.LENGTH_LONG).show();
