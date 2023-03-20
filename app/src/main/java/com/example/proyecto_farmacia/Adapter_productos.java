@@ -50,6 +50,7 @@ public class Adapter_productos extends RecyclerView.Adapter<Adapter_productos.My
             public void onClick(View view) {
                 Toast.makeText(view.getContext(), "You have clicked P1", Toast.LENGTH_LONG).show();
                 Intent intent = new Intent(view.getContext(), ver_producto.class);
+                intent.putExtra(ver_producto.stringUser, (CharSequence) holder.nombre);
                 context.startActivity(intent);
             }
         });
