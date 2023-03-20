@@ -4,6 +4,8 @@ import static android.content.ContentValues.TAG;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -34,6 +36,7 @@ public class Login extends AppCompatActivity {
     Button signUpButton;
     ImageView logoImageView;
     FirebaseAuth mAuth;
+    ProgressDialog progressDialog;
 
 
 
@@ -50,30 +53,18 @@ public class Login extends AppCompatActivity {
         editTextPassword = findViewById(R.id.editTextTextPassword);
         loginButton = findViewById(R.id.loginButton);
         signUpButton = findViewById(R.id.signUpButton);
+
+        progressDialog = new ProgressDialog(this);
         // Initialize Firebase Auth
-        mAuth = FirebaseAuth.getInstance();
+        //mAuth = FirebaseAuth.getInstance();
+        FirebaseAuth.getInstance().signOut();
+
+
         // Configuración de los botones
-
-
         loginButton.setOnClickListener(new View.OnClickListener() {
-
-
+            @Override
             public void onClick(View view) {
-                // Obtener las credenciales introduces
-                String email = editTextEmail.getText().toString();
-                String password = editTextPassword.getText().toString();
-
-                // Validar que se hayan introducido ambos campos
-                if (TextUtils.isEmpty(email) || TextUtils.isEmpty(password)) {
-                    Toast.makeText(Login.this, "Por favor, introduce tus credenciales", Toast.LENGTH_SHORT).show();
-                } else {
-                    // Enviar las credenciales al servidor (aquí se omite el envío para simplificar el ejemplo)
-                    // Si el servidor devuelve un código de éxito, iniciar sesión
-                    Toast.makeText(Login.this, "Bienvenido, " + email, Toast.LENGTH_SHORT).show();
-                    Intent intent = new Intent(Login.this, MainActivity.class);
-                    startActivity(intent);
-                    finish();
-                }
+                loguearUsuario();
             }
         });
 
@@ -86,7 +77,8 @@ public class Login extends AppCompatActivity {
             }
         });
 
-
+        mAuth = FirebaseAuth.getInstance();
+/*
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         if (user != null) {
             // Name, email address, and profile photo Url
@@ -101,9 +93,59 @@ public class Login extends AppCompatActivity {
             // authenticate with your backend server, if you have one. Use
             // FirebaseUser.getIdToken() instead.
             String uid = user.getUid();
+        }*/
+
+    }// FIN On Create
+
+    public void loguearUsuario() {
+        //Obtenemos el email y la contraseña desde las cajas de texto
+        final String email = editTextEmail.getText().toString().trim();
+        final String password  = editTextPassword.getText().toString().trim();
+
+        //Verificamos que las cajas de texto no esten vacías
+        if(TextUtils.isEmpty(email)){
+            Toast.makeText(this,"Se debe ingresar un email",Toast.LENGTH_LONG).show();
+            return;
         }
 
-    }
+        if(TextUtils.isEmpty(password)){
+            Toast.makeText(this,"Falta ingresar la contraseña",Toast.LENGTH_LONG).show();
+            return;
+        }
 
+        if (!TextUtils.isEmpty(email) && !TextUtils.isEmpty(password)) {
+
+            progressDialog.setMessage("Realizando inicio de sesión con " + email + "...");
+            progressDialog.show();
+
+            //Loguear usuario
+            mAuth.signInWithEmailAndPassword(email, password)
+                    .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
+                        @Override
+                        public void onComplete(@NonNull Task<AuthResult> task) {
+                            //Comprueba que se ha logueado correctamente y si es así hace una serie de tareas
+                            if(task.isSuccessful()){
+
+                                Log.d(TAG, "signInWithEmail:success");
+
+                                Toast.makeText(Login.this,"Bienvenido: "+ email,Toast.LENGTH_LONG).show();
+                                //FirebaseUser user = mAuth.getCurrentUser();
+
+                                // Para pasar de una actividad a otra
+                                Intent intencion = new Intent(Login.this, MainActivity.class);
+                                intencion.putExtra(MainActivity.stringUser, email);
+                                startActivity(intencion);
+                                // FIN para pasar de una actividad a otra
+
+
+                            }else{
+
+                                Toast.makeText(Login.this,"No se pudo iniciar sesión con las credenciales aportadas",Toast.LENGTH_LONG).show();
+                            }
+                            progressDialog.dismiss();
+                        }
+                    });
+        }
+    } // FIN Loguear Usuario
 
 }
