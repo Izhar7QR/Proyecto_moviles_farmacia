@@ -70,6 +70,11 @@ public class SingUp extends AppCompatActivity {
                     Toast.makeText(getApplicationContext(), "La contraseña debe tener al menos 8 caracteres", Toast.LENGTH_SHORT).show();
                     return;
                 }
+                // Validar contraseña
+                if (!password.matches("(?=.*[0-9])(?=.*[A-Z]).*")) {
+                    Toast.makeText(getApplicationContext(), "La contraseña debe contener al menos una letra mayúscula y un número", Toast.LENGTH_SHORT).show();
+                    return;
+                }
 
                 // Registramos al usuario
                 registrarUsuario(username, password);
