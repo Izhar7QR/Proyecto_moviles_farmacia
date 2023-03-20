@@ -49,8 +49,30 @@ public class Adapter_productos extends RecyclerView.Adapter<Adapter_productos.My
             @Override
             public void onClick(View view) {
                 Toast.makeText(view.getContext(), "You have clicked P1", Toast.LENGTH_LONG).show();
+
+                ArrayList<String> milista = new ArrayList<String>();
+                milista.add(productos.getNombre());
+                milista.add(productos.getSirve());
+                milista.add(productos.getUsar());
+                milista.add(productos.getOtro_uso());
+                milista.add(productos.getEfectosSecundarios());
+                milista.add(productos.getEfectosGraves());
                 Intent intent = new Intent(view.getContext(), ver_producto.class);
-                intent.putExtra(ver_producto.stringUser, (CharSequence) holder.nombre);
+                intent.putStringArrayListExtra("miLista", milista);
+                //context.startActivity(intent);
+
+
+                //Intent intent = new Intent(view.getContext(), ver_producto.class);
+
+
+
+                /*intent.putExtra(ver_producto.stringNombres, productos.getNombre());
+                intent.putExtra(ver_producto.stringSirve, productos.getSirve());
+                intent.putExtra(ver_producto.stringUsar, productos.getUsar());
+                intent.putExtra(ver_producto.stringUso, productos.getOtro_uso());
+                intent.putExtra(ver_producto.stringefectos, productos.getEfectosSecundarios());
+                intent.putExtra(ver_producto.stringGraves, productos.getEfectosGraves());*/
+
                 context.startActivity(intent);
             }
         });

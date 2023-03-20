@@ -9,75 +9,86 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:orientation="horizontal">
 
         <LinearLayout
-            android:layout_width="wrap_content"
+            android:layout_width="300dp"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:orientation="vertical">
 
-            <TextView
+            <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="5dp"
-                android:text="Nombre: "
-                android:textStyle="bold" />
-            <TextView
-                android:id="@+id/tv_Nombre"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dp"
+                    android:text="Nombre: "
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/tv_Nombre"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Nombre" />
+            </LinearLayout>
+
+            <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Nombre"/>
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dp"
+                    android:text="Descripcion: "
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/tv_Descripcion"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Descripcion" />
+
+                <Space
+                    android:layout_width="15dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dp"
+                    android:text="Precio en el mercado: $"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/tv_Precio"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Precio" />
+            </LinearLayout>
+
+
         </LinearLayout>
 
-        <LinearLayout
-            android:layout_width="wrap_content"
+        <Button
+            android:id="@+id/btn_verProducto"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="5dp"
-                android:text="Descripcion: "
-                android:textStyle="bold" />
-            <TextView
-                android:id="@+id/tv_Descripcion"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Descripcion"/>
-
-            <Space
-                android:layout_width="15dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1" />
-
-            <Button
-                android:id="@+id/btn_verProducto"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="Button"
-                android:onClick="verProducto"/>
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="5dp"
-                android:text="Precio en el mercado: $"
-                android:textStyle="bold" />
-            <TextView
-                android:id="@+id/tv_Precio"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Precio"/>
-        </LinearLayout>
-
+            android:layout_weight="1"
+            android:onClick="verProducto"
+            android:text="Ver mas" />
 
     </LinearLayout>
 
