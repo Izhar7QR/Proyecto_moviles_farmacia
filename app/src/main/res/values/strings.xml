@@ -2,4 +2,9 @@
     <string name="app_name">Proyecto_Farmacia</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="Para_que_sirve">¿Para qué sirve?</string>
+    <string name="Como_se_usa">¿Cómo se debe usar?</string>
+    <string name="Otro_uso">¿Qué otro uso se le puede dar?</string>
+    <string name="Efectos_secundarios">¿Cuáles son los efectos secundarios?</string>
+    <string name="Efectos_secundarios_graves">¿Cuáles son los efectos secundarios graves?</string>
 </resources>
