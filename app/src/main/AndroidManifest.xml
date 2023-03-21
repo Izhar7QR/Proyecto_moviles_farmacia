@@ -12,6 +12,9 @@
         android:theme="@style/Theme.Proyecto_Farmacia"
         tools:targetApi="31" >
         <activity
+            android:name=".ver_producto"
+            android:exported="false" />
+        <activity
             android:name=".MainActivity"
             android:exported="false" />
         <activity
