@@ -34,8 +34,6 @@ public class Home extends Fragment {
     private ListView listView;
     private ArrayAdapter<String> adapter;
 
-    private String[] items = {"Manzana", "Banana", "Cereza", "Durazno", "Fresa", "Grosella", "Higo", "Kiwi", "Limón", "Mango"};
-
 
     public Home() {
         // Required empty public constructor
@@ -68,7 +66,6 @@ public class Home extends Fragment {
         }
 
         }
-
 
     public void search(View view){
         //Intent catalog = new Intent(getContext(), Catalog.class);
@@ -107,7 +104,6 @@ public class Home extends Fragment {
         //listView.setAdapter(adapter);
 
         //searchView.setOnQueryTextListener(this);
-
 
         return vist;
     }
