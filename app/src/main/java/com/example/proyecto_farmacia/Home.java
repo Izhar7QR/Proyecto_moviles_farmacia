@@ -5,6 +5,7 @@ import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -72,12 +73,24 @@ public class Home extends Fragment {
     public void search(View view){
         //Intent catalog = new Intent(getContext(), Catalog.class);
         //startActivity(catalog);
-        Catalog catalog = new Catalog();
+        /*Catalog catalog = new Catalog();
         FragmentManager manager = getParentFragmentManager();
 
         manager.beginTransaction()
                 .replace(R.id.frame_container, catalog)
-                .commit();
+                .commit();*/
+
+        // Crear fragmento de tu clase
+        Fragment fragment = new Catalog();
+// Obtener el administrador de fragmentos a través de la actividad
+        FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
+// Definir una transacción
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+// Remplazar el contenido principal por el fragmento
+        fragmentTransaction.replace(R.id.home, fragment);
+        fragmentTransaction.addToBackStack(null);
+// Cambiar
+        fragmentTransaction.commit();
     }
 
     @Override
