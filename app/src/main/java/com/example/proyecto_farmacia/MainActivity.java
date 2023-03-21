@@ -19,6 +19,7 @@ public class MainActivity extends AppCompatActivity {
     ShopBask shopBask = new ShopBask();
     Favorites favorites = new Favorites();
     Profile profile = new Profile();
+    public static final String stringUser="names";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
