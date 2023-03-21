@@ -46,7 +46,7 @@ public class MainActivity extends AppCompatActivity {
                     return true;
                 case R.id.catalog:
                     loadFragment(catalog);
-                    return true;
+                    return true;/*
                 case R.id.shopBask:
                     loadFragment(shopBask);
                     return true;
@@ -55,7 +55,7 @@ public class MainActivity extends AppCompatActivity {
                     return true;
                 case R.id.profile:
                     loadFragment(profile);
-                    return true;
+                    return true;*/
             }
             return false;
         }
