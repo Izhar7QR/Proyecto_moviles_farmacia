@@ -10,7 +10,10 @@
         android:id="@+id/catalog"
         android:icon="@drawable/ic_catalog"
         android:title="Catalogo"/>
-
+    <item
+        android:id="@+id/Otros"
+        android:icon="@drawable/ic_catalog"
+        android:title="Otros"/>
  
 
 </menu>

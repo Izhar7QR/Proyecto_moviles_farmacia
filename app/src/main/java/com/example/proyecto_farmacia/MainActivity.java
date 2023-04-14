@@ -53,10 +53,10 @@ public class MainActivity extends AppCompatActivity {
                     return true;
                 case R.id.favorites:
                     loadFragment(favorites);
-                    return true;
-                case R.id.profile:
-                    loadFragment(profile);
                     return true;*/
+                case R.id.Otros:
+                    loadFragment(profile);
+                    return true;
             }
             return false;
         }

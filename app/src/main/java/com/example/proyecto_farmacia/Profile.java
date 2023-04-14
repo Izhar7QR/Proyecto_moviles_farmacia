@@ -1,5 +1,6 @@
 package com.example.proyecto_farmacia;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -7,6 +8,7 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -23,6 +25,8 @@ public class Profile extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
+    private Button btnMap, btn_glide;
+
 
     public Profile() {
         // Required empty public constructor
@@ -58,7 +62,27 @@ public class Profile extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+        View vista = inflater.inflate(R.layout.fragment_profile, container, false);
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_profile, container, false);
+        btnMap = vista.findViewById(R.id.btn_maps);
+        btn_glide = vista.findViewById(R.id.btn_glide);
+
+        btnMap.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(view.getContext(), MainMaps.class);
+                startActivity(intent);
+            }
+        });
+
+        btn_glide.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(view.getContext(), Glide.class);
+                startActivity(intent);
+            }
+        });
+
+        return vista;
     }
 }
