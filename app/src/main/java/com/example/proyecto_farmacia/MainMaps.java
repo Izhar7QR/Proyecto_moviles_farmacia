@@ -9,16 +9,16 @@ import android.widget.Button;
 
 public class MainMaps extends AppCompatActivity {
 
-    private Button btnMap;
+    private Button btnMapv;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_maps);
 
-        btnMap = findViewById(R.id.btnMap);
+        btnMapv = findViewById(R.id.btnMap);
 
-        btnMap.setOnClickListener(new View.OnClickListener() {
+        btnMapv.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getApplicationContext(), Map.class);

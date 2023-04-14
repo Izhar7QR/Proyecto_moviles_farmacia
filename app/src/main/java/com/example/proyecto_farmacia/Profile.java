@@ -25,7 +25,7 @@ public class Profile extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
-    private Button btnMap;
+    private Button btnMap, btn_glide;
 
 
     public Profile() {
@@ -65,6 +65,7 @@ public class Profile extends Fragment {
         View vista = inflater.inflate(R.layout.fragment_profile, container, false);
         // Inflate the layout for this fragment
         btnMap = vista.findViewById(R.id.btn_maps);
+        btn_glide = vista.findViewById(R.id.btn_glide);
 
         btnMap.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -74,7 +75,13 @@ public class Profile extends Fragment {
             }
         });
 
-
+        btn_glide.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(view.getContext(), Glide.class);
+                startActivity(intent);
+            }
+        });
 
         return vista;
     }
